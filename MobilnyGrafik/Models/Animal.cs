@@ -3,6 +3,9 @@ namespace MobilnyGrafik.Models
 {
     public class Animal
     {
-        public int AnimalID { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public AppUser User { get; set; }
+        public string UserId { get; set; }
     }
 }

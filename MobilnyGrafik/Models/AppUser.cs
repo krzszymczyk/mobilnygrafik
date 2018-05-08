@@ -6,11 +6,13 @@ namespace MobilnyGrafik.Models
 {
     public class AppUser:IdentityUser
     {
+        public AppUser()
+        {
+                Animals = new List<Animal>();
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-        public int AnimalID { get; set; }
-        public virtual ICollection<Animal> Animals { get; set; }
+        public  ICollection<Animal> Animals { get; set; }
 
 
     }
