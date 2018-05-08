@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MobilnyGrafik.DataAccessLayer;
+using MobilnyGrafik.Models;
 
 namespace MobilnyGrafik
 {
@@ -25,7 +26,8 @@ namespace MobilnyGrafik
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<AppDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
+            services.AddDbContext<AppDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IAnimalRepository, AnimalRepository>();
             services.AddMvc();
 
 
@@ -38,8 +40,14 @@ namespace MobilnyGrafik
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseMvc();
+            app.UseStatusCodePages();
+            app.UseStaticFiles();
+            app.UseMvc(routes=>{
+                routes.MapRoute(
+                          name: "animals",
+                          template: "{controller=Animal}/{action=Index}/{id?}"
+                );
+            });
         }
     }
 }
