@@ -13,6 +13,8 @@
     <Folder Include="Views\Shared\" />
     <Folder Include="DataAccessLayer\" />
     <Folder Include="Views\Animal\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
   <ItemGroup>

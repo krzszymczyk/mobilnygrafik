@@ -1,10 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @model IEnumerable<MobilnyGrafik.Models.Animal>
 @{
+    Layout = "_Layout";
 }
-<div>Welcome page</div>
+
+<h2>Our Animals</h2>
+
 <ul>
    @foreach(var item in Model)
     {

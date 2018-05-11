@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MobilnyGrafik.Models;
 
@@ -9,6 +10,7 @@ using MobilnyGrafik.Models;
 
 namespace MobilnyGrafik.Controllers
 {
+    [Authorize]
     public class AnimalController : Controller
     {
         private readonly IAnimalRepository _repository;
