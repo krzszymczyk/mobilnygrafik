@@ -7,6 +7,7 @@ namespace MobilnyGrafik.Models
     {
         void AddAnimal(Animal animal);
         IEnumerable<Animal> GetAllAnimals();
+		IEnumerable<Animal> GetAllUserAnimals(string userId);
         Animal GetAnimal(int id);
         void DeleteAnimal(int id);
         void UpdateAnimal(Animal animal);

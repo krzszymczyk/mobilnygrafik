@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MobilnyGrafik.DataAccessLayer;
 
 namespace MobilnyGrafik.Models
@@ -27,11 +28,19 @@ namespace MobilnyGrafik.Models
 
         public IEnumerable<Animal> GetAllAnimals()
         {
-            var animals = _context.Animals;
+			var animals = _context.Animals;
             return animals;
         }
 
-        public Animal GetAnimal(int id)
+        
+		public IEnumerable<Animal> GetAllUserAnimals(string userId)
+		{
+			var animals = _context.Animals.ToList().Where(a=>a.UserId==userId);
+             
+			return animals;
+		}
+
+		public Animal GetAnimal(int id)
         {
             var animal = _context.Animals.Find(id);
             return animal;
