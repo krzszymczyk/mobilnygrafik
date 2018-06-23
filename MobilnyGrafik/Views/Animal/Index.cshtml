@@ -1,16 +1,33 @@
-﻿
-@model IEnumerable<MobilnyGrafik.Models.Animal>
+﻿@model IEnumerable<MobilnyGrafik.Models.Animal>
 @{
     Layout = "_Layout";
 }
 
 <h2>Our Animals</h2>
 
-<ul>
-   @foreach(var item in Model)
-    {
-    <li><a asp-action="Edit" asp-controller="Animal" asp-route-id="@item.Id"><span>@item.Name</span></a> <span><a asp-action="Delete" asp-controller="Animal" asp-route-id="@item.Id" class="btn btn-danger">Usuń</a></span></li>
-    } 
-</ul>
+@if (Model.Any())
+{
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+          
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><a asp-action="Edit" asp-controller="Animal" asp-route-id="@item.Id"><span>@item.Name</span></a></td>
+                <td><span><a asp-action="Delete" asp-controller="Animal" asp-route-id="@item.Id" class="btn btn-danger">Usuń</a></span></td>
+            </tr>
+        }
+        </tbody>
 
-<a asp-action="Add" asp-controller="Animal" class="btn btn-primary">Dodaj zwierzaka</a>
+    </table>
+}
+else
+{
+    <span>Nie masz zwierzaków - <a asp-action="Add" asp-controller="Animal" class="btn btn-primary">Dodaj zwierzaka</a></span>
+}
+
+
